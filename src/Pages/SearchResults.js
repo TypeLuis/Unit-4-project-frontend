@@ -4,6 +4,8 @@ import { UserContext } from '../context/UserContext'
 import productFunctions from '../functions/ProductResponse'
 import { Link } from 'react-router-dom'
 
+import './SearchResults.css'
+
 
 const SearchResults = () => {
     const { store, product, page } = useParams()
@@ -11,6 +13,7 @@ const SearchResults = () => {
     const [response, setResponse] = useState([])
     const [responseStatus, setResponseStatus] = useState(0)
     const [pageLimit, setPageLimit] = useState(1)
+    const [added, setAdded] = useState('')
 
     console.log(store, product, parseInt(page))
     console.log(response)
@@ -28,7 +31,23 @@ const SearchResults = () => {
             {responseStatus === 200 ?
 
                 <div>
-                    {productFunctions.showProducts(store, response, Link)}
+
+                    {response.length > 0 ?
+
+                        <div>
+                            {productFunctions.showProducts(store, response, Link, added, setAdded)}
+
+                        </div>
+
+                        :
+
+                        <div>
+                            <h1>No results found</h1>
+                        </div>
+
+
+                    }
+
 
                 </div>
                 :

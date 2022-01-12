@@ -1,5 +1,6 @@
 import axios from 'axios'
 import env from 'react-dotenv'
+import cartFunctions from './CartResponse'
 
 const productFunctions = {}
 
@@ -26,7 +27,7 @@ productFunctions.getProducts = async (store, product, page, setResponse, setResp
 }
 
 
-productFunctions.showProducts = (store, response, Link) => {
+productFunctions.showProducts = (store, response, Link, added, setAdded) => {
     try {
 
         switch (store) {
@@ -39,7 +40,7 @@ productFunctions.showProducts = (store, response, Link) => {
                             console.log(item.short_link)
                             return (
                                 <div>
-                                    <img src={item.image} />
+                                    <img style={{ maxHeight: '300px' }} src={item.image} />
                                     <Link to={`/product/newegg/${item.short_link}`}><p>{item.name}</p></Link>
                                     <p>${item.price}</p>
 
@@ -52,16 +53,38 @@ productFunctions.showProducts = (store, response, Link) => {
 
             case 'ebay':
 
+                const successMessage = () => {
+                    timeOut()
+                    return (
+                        <>
+                            <div id='overlay' style={{ padding: '20px' }}>
+                                <div id='text'>
+                                    <h3>{added}</h3>
+                                </div>
+                            </div>
+                        </>
+                    );
+                };
+                const timeOut = () => {
+                    setTimeout(() => {
+                        setAdded('')
+                    }, 2000);
+                };
+
+
                 return (
                     <div>
+                        {added && successMessage()}
                         {response.map((item, i) => {
-                            console.log(item)
+                            // console.log(item)
+
                             return (
                                 <div>
 
                                     <span>
                                         <img src={item.image} />
-                                        <p>{item.title}</p>
+                                        <Link to={`/product/ebay/${item.short_link}`}><p>{item.title}</p></Link>
+
                                         <p>
                                             <span> {item.condition}</span>
 
@@ -74,6 +97,9 @@ productFunctions.showProducts = (store, response, Link) => {
                                         </p>
 
                                     </span>
+
+
+                                    <button onClick={() => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setAdded) }} >Add to Cart 🛒</button>
 
                                 </div>
 
@@ -90,6 +116,126 @@ productFunctions.showProducts = (store, response, Link) => {
         console.log(error)
     }
 }
+
+
+
+
+
+productFunctions.getProductPage = async (store, productId,
+    setResponse, setResponseStatus) => {
+
+    try {
+        const url = `${process.env.REACT_APP_BACKEND_URL}/${store}/page/${productId}`
+
+        const response = await axios.get(url)
+
+        console.log(response)
+
+        setResponse(response.data.page_info)
+        setResponseStatus(response.status)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+productFunctions.showProductPage = (store, productId, response) => {
+    try {
+        switch (store) {
+
+            case 'ebay':
+                return (
+                    <div>
+                        <h1>{response.title}</h1>
+                        <p>${response.price}</p>
+                        <img src={response.image} />
+                        <p>{response.description_page}</p>
+                    </div>
+                )
+
+            case 'newegg':
+                return (
+
+
+                    <div>
+
+
+
+                        <div className="slider">
+
+                            {response.images.map((item, i) => {
+                                return (
+
+                                    <a href={`#slide-${String(i + 1)}`}>{String(i + 1)}</a>
+                                )
+                            })}
+
+                            <div className="slides">
+                                {response.images.map((item, i) => {
+                                    return (
+
+                                        <div id={`slide-${String(i + 1)}`}><img className='slide-images' src={item.image} /></div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+
+                        <div>
+                            <ul>
+                                {response.product_list.map((item, i) => {
+                                    return (
+                                        <li>{item.bullet_point}</li>
+
+                                    )
+                                })}
+                            </ul>
+                        </div>
+
+                        <div className='tables-container'>
+                            {response.specs.map((item, i) => {
+                                return (
+
+                                    <table className='content-table'>
+                                        {item.caption && <caption>{item.caption}</caption>}
+
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    {item.header}
+                                                </th>
+
+                                                <td>
+                                                    {item.data}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                )
+
+
+                            })}
+
+                        </div>
+                    </div>
+
+                )
+
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default productFunctions
