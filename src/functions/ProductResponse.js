@@ -27,7 +27,7 @@ productFunctions.getProducts = async (store, product, page, setResponse, setResp
 }
 
 
-productFunctions.showProducts = (store, response, Link, added, setAdded) => {
+productFunctions.showProducts = (store, response, Link, modal, setModal) => {
     try {
 
         switch (store) {
@@ -36,6 +36,7 @@ productFunctions.showProducts = (store, response, Link, added, setAdded) => {
                 // console.log(response)
                 return (
                     <div>
+                        {modal && cartFunctions.showModal(modal, setModal)}
                         {response.map((item, i) => {
                             console.log(item.short_link)
                             return (
@@ -43,6 +44,8 @@ productFunctions.showProducts = (store, response, Link, added, setAdded) => {
                                     <img style={{ maxHeight: '300px' }} src={item.image} />
                                     <Link to={`/product/newegg/${item.short_link}`}><p>{item.name}</p></Link>
                                     <p>${item.price}</p>
+
+                                    <button onClick={() => { cartFunctions.addToCart(item.name, item.price, item.link, item.image, setModal) }} >Add to Cart 🛒</button>
 
                                 </div>
 
@@ -53,28 +56,10 @@ productFunctions.showProducts = (store, response, Link, added, setAdded) => {
 
             case 'ebay':
 
-                const successMessage = () => {
-                    timeOut()
-                    return (
-                        <>
-                            <div id='overlay' style={{ padding: '20px' }}>
-                                <div id='text'>
-                                    <h3>{added}</h3>
-                                </div>
-                            </div>
-                        </>
-                    );
-                };
-                const timeOut = () => {
-                    setTimeout(() => {
-                        setAdded('')
-                    }, 2000);
-                };
-
 
                 return (
                     <div>
-                        {added && successMessage()}
+                        {modal && cartFunctions.showModal(modal, setModal)}
                         {response.map((item, i) => {
                             // console.log(item)
 
@@ -99,7 +84,7 @@ productFunctions.showProducts = (store, response, Link, added, setAdded) => {
                                     </span>
 
 
-                                    <button onClick={() => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setAdded) }} >Add to Cart 🛒</button>
+                                    <button onClick={() => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setModal) }} >Add to Cart 🛒</button>
 
                                 </div>
 

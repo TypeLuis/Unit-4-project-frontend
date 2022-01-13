@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom'
 import { UserContext } from "../context/UserContext"
 import { useState, useContext, useEffect } from 'react'
 import './Header.css'
+import SearchForm from './SearchForm'
 
 const Headers = () => {
     const { userState } = useContext(UserContext)
@@ -36,6 +37,7 @@ const Headers = () => {
 
 
                 <Link to='/search' >Search</Link>
+                <SearchForm />
 
 
 

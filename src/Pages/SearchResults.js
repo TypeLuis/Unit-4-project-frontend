@@ -13,7 +13,7 @@ const SearchResults = () => {
     const [response, setResponse] = useState([])
     const [responseStatus, setResponseStatus] = useState(0)
     const [pageLimit, setPageLimit] = useState(1)
-    const [added, setAdded] = useState('')
+    const [modal, setModal] = useState('')
 
     console.log(store, product, parseInt(page))
     console.log(response)
@@ -35,7 +35,7 @@ const SearchResults = () => {
                     {response.length > 0 ?
 
                         <div>
-                            {productFunctions.showProducts(store, response, Link, added, setAdded)}
+                            {productFunctions.showProducts(store, response, Link, modal, setModal)}
 
                         </div>
 

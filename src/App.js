@@ -8,6 +8,8 @@ import SearchResults from './Pages/SearchResults';
 import Signup from './Pages/Signup';
 
 import Checkout from './Pages/Checkout'
+import Order from './Pages/Order';
+import OrderDetails from './components/OrderDetails';
 
 function App() {
   return (
@@ -23,11 +25,16 @@ function App() {
 
         {/* <Route path='store/:store/:product' element={<SearchResults />} /> */}
 
-        <Route path='store/:store/:product/:page' element={<SearchResults />} />
+        <Route path='/store/:store/:product/:page' element={<SearchResults />} />
 
-        <Route path='product/:store/:productId' element={<ProductPage />} />
+        <Route path='/product/:store/:productId' element={<ProductPage />} />
 
-        <Route path='checkout' element={<Checkout />} />
+        <Route path='/checkout' element={<Checkout />} />
+
+        <Route path='/orders' element={<Order />} />
+
+        <Route path='/orders/:id' element={<OrderDetails />} />
+
 
 
       </Routes>

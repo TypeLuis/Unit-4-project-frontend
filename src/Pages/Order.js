@@ -5,26 +5,26 @@ import productFunctions from '../functions/ProductResponse'
 import cartFunctions from '../functions/CartResponse'
 import { Link } from 'react-router-dom'
 
+const Order = () => {
 
-const Checkout = () => {
     const [response, setResponse] = useState([])
     const [responseStatus, setResponseStatus] = useState(0)
-    const [switchBool, setSwitchBool] = useState(false)
-    const [modal, setModal] = useState('')
 
     useEffect(() => {
-        cartFunctions.getCheckout(setResponse, setResponseStatus)
-    }, [switchBool])
+        cartFunctions.getOrders(setResponse, setResponseStatus)
+    }, [])
     return (
         <div>
             {responseStatus === 200 &&
-                <>
-                    {cartFunctions.showCheckout(response, switchBool, setSwitchBool, modal, setModal)}
-                </>
-            }
 
+                <>
+                    {cartFunctions.showOrderList(response, Link)}
+                </>
+
+
+            }
         </div>
     )
 }
 
-export default Checkout
+export default Order
