@@ -23,11 +23,11 @@ const Login = () => {
             <form className='user-form'  onSubmit={(e) => { userFunctions.handleUserSubmit(e, email, password, setUser, setError) }}>
                 <div className='email'>
                     <label htmlFor="login-email"></label>
-                    <input id="login-email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input placeholder='Enter email' id="login-email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className='password'>
                     <label htmlFor="login-password"></label>
-                    <input id="login-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input placeholder='Enter you password here' id="login-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div>
                     <input className='form-sub' type="submit" value="Log in!" ></input>

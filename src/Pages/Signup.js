@@ -21,12 +21,12 @@ const Signup = () => {
             <form className='user-form' onSubmit={(e) => { userFunctions.handleUserSubmit(e, email, password, setUser, setError) }}>
                 <div className='email'>
                     <label  htmlFor="signup-email"></label>
-                    <input id="signup-email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input placeholder='Enter email' id="signup-email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
                 <div className='password' >
                     <label htmlFor="signup-password"></label>
-                    <input id="signup-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input placeholder='Enter you password here' id="signup-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
 
                 <div>
