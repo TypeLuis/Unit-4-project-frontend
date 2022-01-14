@@ -30,7 +30,7 @@ const Signup = () => {
                 </div>
 
                 <div>
-                    <input className='form-sub' type="submit" value="Sign up!" ></input>
+                    <button className='form-sub' >Sign up!</button>
                 </div>
 
             </form>

@@ -73,7 +73,7 @@
   width: 220px;
   height: 60px;
   border-radius: 70px;
-  color: #0e2752;
+  /* color: #0e2752; */
   background: #924e996e;
 
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.6), 0 0 0.125em #0e2752;
@@ -84,5 +84,40 @@
 }
 
 .form-sub:hover {
-  background: #924e9998;
+  background: #924e99c0;
+}
+
+.form-sub::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  display: block;
+  background: #924e99;
+  border-radius: 70px;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.25);
+  filter: blur(2em);
+  opacity: 0.7;
+}
+
+.form-sub::after {
+  content: "";
+  position: absolute;
+  border-radius: 70px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background-color: burlywood; */
+  box-shadow: 0 0 2em 0.5em #924e99;
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+.form-sub:hover:after {
+  opacity: 1;
 }
