@@ -17,19 +17,19 @@ const Signup = () => {
 
             {error && <div>{error}</div>}
 
-            <form onSubmit={(e) => { userFunctions.handleUserSubmit(e, email, password, setUser, setError) }}>
-                <div>
-                    <label htmlFor="signup-email">Email:</label>
+            <form className='user-form' onSubmit={(e) => { userFunctions.handleUserSubmit(e, email, password, setUser, setError) }}>
+                <div className='email'>
+                    <label  htmlFor="signup-email"></label>
                     <input id="signup-email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
-                <div>
-                    <label htmlFor="signup-password">Password:</label>
+                <div className='password' >
+                    <label htmlFor="signup-password"></label>
                     <input id="signup-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
 
                 <div>
-                    <input type="submit" value="Sign up!" ></input>
+                    <input className='form-sub' type="submit" value="Sign up!" ></input>
                 </div>
 
             </form>

@@ -1,6 +1,7 @@
 import { React, useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 import userFunctions from '../functions/UserResponse'
+import './Login.css'
 
 
 const Login = () => {
@@ -19,17 +20,17 @@ const Login = () => {
 
             {error && <div>{error}</div>}
 
-            <form onSubmit={(e) => { userFunctions.handleUserSubmit(e, email, password, setUser, setError) }}>
-                <div>
-                    <label htmlFor="signup-email">Email:</label>
-                    <input id="signup-email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <form className='user-form'  onSubmit={(e) => { userFunctions.handleUserSubmit(e, email, password, setUser, setError) }}>
+                <div className='email'>
+                    <label htmlFor="login-email"></label>
+                    <input id="login-email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className='password'>
+                    <label htmlFor="login-password"></label>
+                    <input id="login-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="signup-password">Password:</label>
-                    <input id="signup-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <div>
-                    <input type="submit" value="Log in!" ></input>
+                    <input className='form-sub' type="submit" value="Log in!" ></input>
                 </div>
             </form>
         </div>
