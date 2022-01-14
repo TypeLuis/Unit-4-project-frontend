@@ -10,7 +10,7 @@ userFunctions.handleUserSubmit = async (e, email, password, setUser, setError) =
         console.log(currentWindow)
         const extension = currentWindow ? 'users' : 'users/login'
         console.log(extension)
-        const url = `${env.REACT_APP_BACKEND_URL}/${extension}`
+        const url = `${process.env.REACT_APP_BACKEND_URL}/${extension}`
         console.log(url)
         const response = await axios.post(url, { "email": email, "password": password })
 
@@ -20,10 +20,28 @@ userFunctions.handleUserSubmit = async (e, email, password, setUser, setError) =
         localStorage.setItem('userId', response.data.user_id)
     }
     catch (error) {
-        setError(error.response.data.message)
+        // setError(error.response.data.message)
         console.log(error)
     }
 }
+
+
+userFunctions.fetchUser = async (setUser) => {
+    try {
+      const userId = localStorage.getItem('userId')
+      if (userId) {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/verify`, {
+          headers: {
+            Authorization: userId
+          }
+        })
+        console.log(response)
+        setUser(response.data.user)
+      }
+    }
+    catch (error) { console.log(error) }
+
+  }
 
 
 

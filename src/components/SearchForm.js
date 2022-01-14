@@ -21,8 +21,8 @@ const SearchForm = () => {
 
             <form className='search-form' onSubmit={handleSubmit}>
                 <div>
-                    <select onChange={(e) => { setStore(e.target.value); e.target.style.color = '#000000' }}>
-                        <option disabled selected hidden>What store do you want to choose from</option>
+                    <select id='store' onChange={(e) => { setStore(e.target.value)}}>
+                        <option disabled selected hidden>Chose your store</option>
 
                         <option value='newegg'>Newegg</option>
                         <option value='ebay'>Ebay</option>
@@ -31,12 +31,17 @@ const SearchForm = () => {
                 </div>
 
                 <div>
-                    <label htmlFor='search'></label>
-                    <input placeholder='Search for Product' value={search} onChange={(e) => { setSearch(e.target.value); e.target.style.color = '#000000' }} />
+                    {store === 'newegg' && <label id='newegg-label' htmlFor='search'></label>}
+
+                    {store === 'ebay' && <label id='ebay-label' htmlFor='search'></label>}
+
+                    {store === '' && <label htmlFor='search'></label>}
+                    
+                    <input id='search-field' placeholder='Search for Product' value={search} onChange={(e) => { setSearch(e.target.value);  }} />
                 </div>
 
                 <div className='submit-div'>
-                    <input type="submit" value="Search Now!!" />
+                    <input id='search-submit' type="submit" value="Search Now!!" />
                 </div>
 
             </form>

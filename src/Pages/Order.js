@@ -14,7 +14,7 @@ const Order = () => {
         cartFunctions.getOrders(setResponse, setResponseStatus)
     }, [])
     return (
-        <div>
+        <div className='order-list'>
             {responseStatus === 200 &&
 
                 <>

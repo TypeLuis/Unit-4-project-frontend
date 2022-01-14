@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect } from 'react'
+import { React, useState, useContext, useEffect, useRef, createRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import productFunctions from '../functions/ProductResponse'
@@ -13,6 +13,7 @@ const SearchResults = () => {
     const [response, setResponse] = useState([])
     const [responseStatus, setResponseStatus] = useState(0)
     const [pageLimit, setPageLimit] = useState(1)
+    const [loading, setLoading] = useState(false)
     const [modal, setModal] = useState('')
 
     console.log(store, product, parseInt(page))
@@ -21,39 +22,65 @@ const SearchResults = () => {
     useEffect(() => {
         productFunctions.getProducts(
             store, product, page,
-            setResponse, setResponseStatus, setPageLimit
+            setResponse, setResponseStatus, setPageLimit,
+            setLoading
         )
     }, [store, product, page])
 
     return (
         <div>
+            {loading ?
+            
+                <h1>Loading...</h1>
 
-            {responseStatus === 200 ?
+            :
 
-                <div>
+                <>
+                
+                {responseStatus === 200 ?
 
-                    {response.length > 0 ?
+                    <div>
 
-                        <div>
-                            {productFunctions.showProducts(store, response, Link, modal, setModal)}
+                        {response.length > 0 ?
 
-                        </div>
+                            <div >
+                                <>
+                                    {parseInt(page) > 1 && 
+                                    
+                                        <Link to={`/store/${store}/${product}/${page > 0 && parseInt(page) - 1}`} ><button>back</button></Link>
+                                    }
+                                    
+                                    {parseInt(page) < pageLimit &&
+                                        
+                                        <Link to={`/store/${store}/${product}/${parseInt(page) + 1}`} ><button >next</button></Link>
+                                    }
 
-                        :
+                                </>
 
-                        <div>
-                            <h1>No results found</h1>
-                        </div>
+                                {productFunctions.showProducts(store, response, Link, modal, setModal)}
+
+                            </div>
+
+                            :
+
+                            <div>
+                                <h1>No results found</h1>
+                            </div>
 
 
+                        }
+
+
+                    </div>
+                    :
+
+                    null
                     }
 
-
-                </div>
-                :
-
-                null
-            }
+                </>
+        
+        }
+            
         </div>
     )
 }

@@ -12,7 +12,7 @@ const Headers = () => {
         <div>
             <nav className='navbar'>
 
-                {localStorage.getItem('userId') ?
+                {user.email ?
 
 
 
@@ -34,9 +34,6 @@ const Headers = () => {
                 }
 
 
-
-
-                <Link to='/search' >Search</Link>
                 <SearchForm />
 
 

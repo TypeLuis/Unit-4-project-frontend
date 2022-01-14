@@ -11,8 +11,6 @@ window.env = {
   "ComSpec": "C:\\Windows\\system32\\cmd.exe",
   "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
   "EDITOR": "notepad.exe",
-  "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
-  "FPS_BROWSER_USER_PROFILE_STRING": "Default",
   "HOME": "C:\\Users\\typel",
   "HOMEDRIVE": "C:",
   "HOMEPATH": "\\Users\\typel",
@@ -60,7 +58,7 @@ window.env = {
   "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules",
   "PUBLIC": "C:\\Users\\Public",
   "PyCharm Community Edition": "C:\\Program Files\\JetBrains\\PyCharm Community Edition 2021.3\\bin;",
-  "REACT_APP_BACKEND_URL": "http://localhost:5001",
+  "REACT_APP_BACKEND_URL": "https://store-search-backend.herokuapp.com",
   "SystemDrive": "C:",
   "SystemRoot": "C:\\Windows",
   "TEMP": "C:\\Users\\typel\\AppData\\Local\\Temp",
@@ -72,5 +70,5 @@ window.env = {
   "windir": "C:\\Windows",
   "WSLENV": "WT_SESSION::WT_PROFILE_ID",
   "WT_PROFILE_ID": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-  "WT_SESSION": "c3a6a852-9ffa-4f5e-98af-e96fd7c13eab"
+  "WT_SESSION": "496c8bed-9032-4358-9ac1-2fe3b8c59636"
 };

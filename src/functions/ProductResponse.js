@@ -2,10 +2,13 @@ import axios from 'axios'
 import env from 'react-dotenv'
 import cartFunctions from './CartResponse'
 
+
 const productFunctions = {}
 
-productFunctions.getProducts = async (store, product, page, setResponse, setResponseStatus, setPageLimit) => {
+productFunctions.getProducts = async (store, product, page, setResponse, setResponseStatus, setPageLimit, setLoading) => {
     try {
+
+        setLoading(true)
 
         const extention = page <= 1 ? `${store}/${product}` : `${store}/${product}?page=${page}`
 
@@ -13,11 +16,13 @@ productFunctions.getProducts = async (store, product, page, setResponse, setResp
 
         const response = await axios.get(url)
 
-        console.log(response)
+        // console.log(response)
 
         setResponse(response.data.products)
         setResponseStatus(response.status)
         setPageLimit(response.data.pages)
+
+        setLoading(false)
 
 
     }
@@ -30,22 +35,29 @@ productFunctions.getProducts = async (store, product, page, setResponse, setResp
 productFunctions.showProducts = (store, response, Link, modal, setModal) => {
     try {
 
+        
+
         switch (store) {
 
             case 'newegg':
                 // console.log(response)
                 return (
-                    <div>
+                    <div >
                         {modal && cartFunctions.showModal(modal, setModal)}
                         {response.map((item, i) => {
-                            console.log(item.short_link)
                             return (
-                                <div>
+                                <div key={i}>
                                     <img style={{ maxHeight: '300px' }} src={item.image} />
                                     <Link to={`/product/newegg/${item.short_link}`}><p>{item.name}</p></Link>
                                     <p>${item.price}</p>
 
-                                    <button onClick={() => { cartFunctions.addToCart(item.name, item.price, item.link, item.image, setModal) }} >Add to Cart 🛒</button>
+
+                                    {localStorage.getItem('userId') && 
+                                        <>
+                                            <button onClick={(e) => { cartFunctions.addToCart(item.name, item.price, item.link, item.image, setModal); }} >Add to Cart 🛒</button>
+                                        </>
+                                    }
+
 
                                 </div>
 
@@ -83,8 +95,13 @@ productFunctions.showProducts = (store, response, Link, modal, setModal) => {
 
                                     </span>
 
-
-                                    <button onClick={() => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setModal) }} >Add to Cart 🛒</button>
+                                    {localStorage.getItem('userId') &&
+                                    
+                                        <>
+                                            <button onClick={(e) => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setModal); }} >Add to Cart 🛒</button>
+                                        </>
+                                    
+                                    }
 
                                 </div>
 
