@@ -13,7 +13,7 @@ const Login = () => {
 
     return (
         <div>
-            <h2>Log into your accout!</h2>
+            <h2>Log into your account!</h2>
 
             {/* { error && 
           <div className="error">{error}</div>} */}

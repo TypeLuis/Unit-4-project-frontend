@@ -14,6 +14,7 @@ const Signup = () => {
 
     return (
         <div>
+            <h2>Signup to your account!</h2>
 
             {error && <div>{error}</div>}
 
