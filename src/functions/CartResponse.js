@@ -1,7 +1,5 @@
 import axios from 'axios'
 import env from 'react-dotenv'
-import themeFunctions from './Themes'
-
 const cartFunctions = {}
 
 cartFunctions.addToCart = async (item_name, item_price, item_link, item_img, setModal) => {

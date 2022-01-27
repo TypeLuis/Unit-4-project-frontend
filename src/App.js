@@ -16,7 +16,9 @@ import Order from './Pages/Order';
 import OrderDetails from './components/OrderDetails';
 import NoPage from './Pages/NoPage';
 import Test from './Pages/Test';
-import './switcher.scss'
+// import './switcher.scss'
+import axios from 'axios'
+import Home from './Pages/Home';
 
 function App() {
 
@@ -35,23 +37,13 @@ function App() {
     }
   }, [])
 
-  const handleClick = (theme) => {
-    setColorTheme(theme)
-    localStorage.setItem('theme-color', theme)
-  }
+  
+
 
 
   return (
     <div className={`App ${colorTheme}`}>
-      <Headers />
-
-      <div className='theme-options'>
-        <div onClick={()=>{handleClick('theme-bubble')}} id='theme-bubble'/>
-        <div onClick={()=>{handleClick('theme-sky')}} id='theme-sky'/>
-        <div onClick={()=>{handleClick('theme-dark')}} id='theme-dark'/>
-        <div onClick={()=>{handleClick('theme-original')}} id='theme-original'/>
-      </div>
-
+      <Headers setColorTheme={setColorTheme} />
 
 
       <Routes>
@@ -61,10 +53,11 @@ function App() {
         <Route path='/*' element={<NoPage />}/>
 
         <Route path='/' element={
-          user.email ?
-            <Navigate to={'/store/ebay/3080/1'} />
-          :
-            <Navigate to={'/signup'} />
+          <Home />
+          // user.email ?
+          //   <Navigate to={'/store/ebay/3080/1'} />
+          // :
+          //   <Navigate to={'/signup'} />
         }/>
 
         <Route path='/signup' element={

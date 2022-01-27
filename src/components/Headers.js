@@ -1,44 +1,108 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import { UserContext } from "../context/UserContext"
-import { useState, useContext, useEffect } from 'react'
-import './Header.css'
+import { useState, useContext, useEffect, useRef } from 'react'
+import './Header.scss'
 import SearchForm from './SearchForm'
 
-const Headers = () => {
+import { FaBars } from "react-icons/fa";
+
+const Headers = (props) => {
     const { userState } = useContext(UserContext)
     const [user, setUser] = userState
+    const [burger, setBurger] = useState(false)
+    const [content, setContent] = useState(false)
+
+    const myContainer = useRef(null);
+
+    useEffect(() => {
+    
+        console.log(myContainer)
+        console.log(myContainer.current.getBoundingClientRect())
+        console.log(window.getComputedStyle(myContainer.current).getPropertyValue('height'))
+    });
+
+    const handleClick = (theme) => {
+        props.setColorTheme(theme)
+        localStorage.setItem('theme-color', theme)
+    }
+
+
+    const handleBurgerClick = () => {
+        if(burger === true){
+            setContent(!content)
+            setTimeout(()=> {setBurger(!burger)}, 450)
+        }
+        else{
+            setBurger(!burger)
+            setContent(!content)
+        }
+    }
+
     return (
         <div>
-            <nav className='navbar'>
+            <nav ref={myContainer} className='navbar'>
 
-                {user.email ?
+                <div className='links'>
+                    {user.email ?
 
 
 
-                    <div className='userShows'>
-                        <Link to={`/checkout`}>checkout</Link>
-                        <Link to={`/orders`}>orders</Link>
-                        <Link to='/login' onClick={() => { setUser({}); localStorage.removeItem('userId') }} >Logout</Link>
+                        <div className='userShows'>
+                            <Link to={`/checkout`}>checkout</Link>
+                            <Link to={`/orders`}>orders</Link>
+                            <Link to='/login' onClick={() => { setUser({}); localStorage.removeItem('userId') }} >Logout</Link>
+                        </div>
+
+                        :
+                        <>
+
+                            <Link to='/signup' >Signup</Link>
+
+                            <Link to='/login' >login</Link>
+
+                        </>
+
+                    }
+                </div>
+
+
+                <span className='theme-options'>
+                    <span onClick={()=>{handleClick('theme-bubble')}} id='theme-bubble'/>
+                    <span onClick={()=>{handleClick('theme-sky')}} id='theme-sky'/>
+                    <span onClick={()=>{handleClick('theme-dark')}} id='theme-dark'/>
+                    <span onClick={()=>{handleClick('theme-original')}} id='theme-original'/>
+                </span>
+                <SearchForm />
+
+                <span onClick={handleBurgerClick} className='hamburger'>
+                    <FaBars />
+                </span>
+
+
+                {burger &&
+            
+                    <div className={`burger-content ${String(content)}`}>
+                        
+                        <ol>
+                            <li>About</li>
+
+                            <li>Skills</li>
+
+                            <li>Portfolio</li>
+
+                        </ol>
+                        
                     </div>
 
-                    :
-                    <>
-
-                        <Link to='/signup' >Signup</Link>
-
-                        <Link to='/login' >login</Link>
-
-                    </>
 
                 }
 
 
-                <SearchForm />
-
 
 
             </nav>
+            <div id='space'></div>
         </div>
     )
 }

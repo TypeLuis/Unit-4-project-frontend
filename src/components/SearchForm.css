@@ -1,5 +1,10 @@
+.search-div {
+  display: inline;
+}
+
 .search-form {
   margin-top: 7px;
+  width: max-content;
   display: flex;
   flex-direction: row;
   justify-content: center;

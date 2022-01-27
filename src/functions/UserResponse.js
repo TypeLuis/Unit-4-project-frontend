@@ -7,7 +7,7 @@ userFunctions.handleUserSubmit = async (e, email, password, setUser, setError) =
     e.preventDefault()
     try {
         const currentWindow = window.location.pathname === '/signup'
-        console.log(currentWindow)
+        
         const extension = currentWindow ? 'users' : 'users/login'
         console.log(extension)
         const url = `${process.env.REACT_APP_BACKEND_URL}/${extension}`
