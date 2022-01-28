@@ -65,7 +65,7 @@ const Headers = (props) => {
 
                     }
                 </div>
-
+ 
 
                 <span className='theme-options'>
                     <span onClick={()=>{handleClick('theme-bubble')}} id='theme-bubble'/>

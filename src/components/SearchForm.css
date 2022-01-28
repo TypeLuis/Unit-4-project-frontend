@@ -3,7 +3,7 @@
 }
 
 .search-form {
-  margin-top: 7px;
+  margin-top: 8px;
   width: max-content;
   display: flex;
   flex-direction: row;
@@ -44,7 +44,8 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 1em;
   line-height: 21px;
 }
 

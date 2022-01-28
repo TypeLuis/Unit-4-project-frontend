@@ -15,7 +15,7 @@
 /* Navbar container */
 .navbar {
   font-family: Arial;
-  z-index: 1;
+  z-index: 100;
   overflow: hidden;
 
   /* https://www.codegrepper.com/code-examples/css/how+to+make+nav+bar+stay+on+screen+while+scrolling */
@@ -24,11 +24,23 @@
   width: 100%; /* Full width */
   /* Links inside the navbar */
 
-  z-index: 100;
-  @media (min-width: 951) {
-    display: flex;
-  }
   background-color: #333;
+
+  @media (min-width: 951px) {
+    display: flex;
+    .hamburger {
+      display: none;
+    }
+
+    .burger-content {
+      display: none;
+    }
+
+    .search-form {
+      justify-items: center;
+      align-items: center;
+    }
+  }
 
   & a {
     float: left;
@@ -67,6 +79,7 @@
       // padding: 3px 8px;
       // margin-top: 0.1em;
       // font-size: 2em;
+      display: block;
       float: left;
       margin: 0.25em;
       color: turquoise;
