@@ -1,7 +1,15 @@
+@import "./functions/products.scss";
+@import "./components/switcher";
+
+:root {
+  --header-height: 46px;
+}
+
 .App {
   text-align: center;
   height: 100%;
   min-height: 100vh;
+  // background-color: var(--bg);
   background-color: rgb(67, 45, 128);
 }
 

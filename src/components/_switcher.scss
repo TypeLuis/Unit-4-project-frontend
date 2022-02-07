@@ -1,5 +1,7 @@
 // https://www.youtube.com/watch?v=VMF1i5I2imE
 
+// https://www.youtube.com/watch?v=rXuHGLzSmSE
+
 // npm i node-sass
 
 * {
@@ -15,6 +17,84 @@ body {
   color: #222;
   padding: 0;
   height: 100%;
+}
+
+:root {
+  --darkRed: #49111c;
+  --white: #f2f4f3;
+  --blue: #1098f7;
+  --beige: #b3aa64;
+  --beige2: #ffe7b3;
+  --pink: #dcb6d5;
+  --lavender: #cec2ff;
+  --lavender2: #ae9aff;
+  --lavender3: rgb(145, 117, 255);
+  --green: #05961d;
+  --yellow: #eac435;
+  --orange: #fb4d3d;
+  --hotPink: #e40066;
+  --gray-purple: #5f5980;
+  --gray: #5c574f;
+}
+
+.theme-sky {
+  --bg: var(--darkRed);
+  --bg-Nav: var(--gray-purple);
+  --bg-nav-hover: var(--hotPink);
+  --bg-store: var(--lavender);
+  --bg-search: #acaefa;
+  --bg-submit: var(--lavender2);
+  --bg-submit-hover: var(--lavender3);
+  --bg-submit-icon: var(--beige2);
+  --bg-modal: var(--green);
+  --color: var(--blue);
+  --store-color: var(--beige);
+  --shadow-submit: var(--lavender3);
+}
+
+.theme-original {
+  --bg: rgb(67, 45, 128);
+  --bg-Nav: #333;
+  --bg-nav-hover: firebrick;
+  --bg-store: #9e55a656;
+  --bg-search: #99566286;
+  --bg-submit: #924e996e;
+  --bg-submit-hover: #924e9998;
+  --bg-submit-icon: var(--beige2);
+  --bg-modal: #5cb85c;
+  --color: #222;
+  --store-color: #5c518f;
+  --shadow-submit: #924e99;
+}
+
+.theme-bubble {
+  --bg: #ba6ffd;
+  --bg-Nav: #4445ad;
+  --bg-nav-hover: var(--hotPink);
+  --bg-store: #fe63e75b;
+  --bg-search: #acaefa;
+  --bg-submit: #acaffab9;
+  --bg-submit-hover: #acaffa;
+  --bg-submit-icon: var(--hotPink);
+  --bg-modal: #d4a3ff;
+  --color: #4445ad;
+  --store-color: #ff5e57;
+  --shadow-submit: #9641e05d;
+}
+
+.theme-dark {
+  --bg: rgb(20, 20, 20);
+  --bg-Nav: #bf511f;
+  --bg-nav-hover: var(--orange);
+  --bg-search: #8c8c8c;
+  --bg-store: var(--gray);
+  --bg-submit: var(--gray);
+  --bg-submit-hover: var(--gray-purple);
+  --bg-submit-icon: #acaefa;
+  --bg-modal: #ff6d29;
+  --color: var(--orange);
+  --store-color: #f8f8f8;
+  --shadow-submit: #e6622580;
 }
 
 .theme-options {
@@ -39,7 +119,7 @@ body {
 }
 
 #theme-sky {
-  background-color: #94eeff;
+  background-color: var(--darkRed);
 }
 
 #theme-dark {
@@ -50,156 +130,225 @@ body {
   background-color: rgb(67, 45, 128);
 }
 
-.App.theme-bubble {
-  background-color: #ba6ffd;
-  color: #4445ad;
-  button {
-    background-color: #4a4cff;
-  }
-  #store {
-    background: #fe63e75b;
-    color: #ff5e57;
-  }
-  .navbar {
-    background-color: #4445ad;
+.App {
+  background-color: var(--bg);
+  color: var(--color);
 
-    a:hover {
-      background-color: #debbfd;
+  transition: color 1000ms ease-in-out, background-color 500ms ease-in-out;
+
+  @media (min-width: 600px) {
+    .form-acc {
+      box-shadow: -0.5vmin -0.8vmin 5vmin 5vmin var(--bg-Nav);
+      transition: box-shadow 1000ms ease-in-out;
     }
   }
+
+  #store {
+    color: var(--store-color);
+    background: var(--bg-store);
+    transition: color 1000ms ease-in-out, background 500ms ease-in-out;
+  }
+
+  .navbar {
+    background-color: var(--bg-Nav);
+
+    transition: background-color 500ms ease-in-out;
+
+    .burger-content {
+      background-color: var(--bg-Nav);
+      transition: background-color 500ms ease-in-out;
+    }
+
+    & a:hover {
+      background-color: var(--bg-nav-hover);
+    }
+  }
+
   #search-field {
-    background-color: #acaefa;
+    background: var(--bg-search);
+    transition: background 500ms ease-in-out;
   }
 
   #search-submit {
-    color: #9541e0;
-    background: #acaffab9;
+    background: var(--bg-submit);
 
-    text-shadow: 0 0 0.125em hsl(100, 100%, 100%), 0 0 0.125em #acaffab9;
+    box-shadow: inset 0 0 0.5em 0 var(--shadow-submit),
+      0 0 0.5em 0 var(--shadow-submit);
 
-    box-shadow: inset 0 0 0.5em 0 #9641e05d, 0 0 0.5em 0 #9641e05d;
+    transition: background 500ms ease-in-out, box-shadow 1000ms ease-in-out;
 
     &:hover {
-      background: #acaffa;
+      background: var(--bg-submit-hover);
+      transition: background 300ms ease-in-out;
+    }
+
+    &::before {
+      background-color: var(--bg-submit-icon);
+      transition: background-color 500ms ease-in-out;
     }
   }
 
   .modal-header {
-    background-color: #d4a3ff;
+    background-color: var(--bg-modal);
+    transition: background-color 500ms ease-in-out;
   }
 }
 
-.App.theme-sky {
-  background-color: #94eeff;
-  color: #4445ad;
-  button {
-    background-color: #87acff;
-  }
-  #store {
-    background: #fab6578e;
-    color: #32fad8;
-  }
-  .navbar {
-    background-color: #6fb2bf;
+// .App.theme-original {
+//   background-color: rgb(67, 45, 128);
+//   color: #222;
+//   button {
+//     background-color: #8c8c8c;
+//   }
+//   #store {
+//     color: #5c518f;
+//     background: #9e55a656;
+//   }
+//   .navbar {
+//     background-color: #333;
+//   }
+//   .navbar a:hover {
+//     background-color: red;
+//   }
+//   #search-field {
+//     background: #99566286;
+//   }
 
-    a:hover {
-      background-color: #fa3e44;
-    }
-  }
-  #search-field {
-    background-color: #fab657a6;
-  }
+//   #search-submit {
+//     color: #0e2752;
+//     background: #924e996e;
 
-  #search-submit {
-    color: #87ffd1;
-    background: #e3452d86;
+//     text-shadow: 0 0 0.125em white, 0 0 0.125em #0e2752;
 
-    text-shadow: 0 0 0.125em hsl(100, 100%, 100%), 0 0 0.125em #e3452d86;
+//     box-shadow: inset 0 0 0.5em 0 #924e99, 0 0 0.5em 0 #924e99;
+//   }
+//   #search-submit:hover {
+//     background: #924e9998;
+//   }
 
-    box-shadow: inset 0 0 0.5em 0 #87ffd191, 0 0 0.5em 0 #87ffd191;
+//   .modal-header {
+//     background-color: #5cb85c;
+//   }
+// }
 
-    &:hover {
-      background: #e3452dbb;
-    }
-  }
+// .App.theme-bubble {
+//   background-color: #ba6ffd;
+//   color: #4445ad;
+//   button {
+//     background-color: #4a4cff;
+//   }
+//   #store {
+//     background: #fe63e75b;
+//     color: #ff5e57;
+//   }
+//   .navbar {
+//     background-color: #4445ad;
 
-  .modal-header {
-    background-color: #6effc7;
-  }
-}
+//     a:hover {
+//       background-color: #debbfd;
+//     }
+//   }
+//   #search-field {
+//     background-color: #acaefa;
+//   }
 
-.App.theme-dark {
-  background-color: rgb(20, 20, 20);
-  color: #ff6d29;
+//   #search-submit {
+//     &::before {
+//       color: #9541e0;
+//     }
+//     background: #acaffab9;
 
-  button {
-    background-color: #403939;
-  }
-  #store {
-    background: #436b50d0;
-    color: #f8f8f8;
-  }
-  .navbar {
-    background-color: #bf511f;
-  }
-  .navbar a:hover {
-    background-color: #fa252d;
-  }
-  #search-field {
-    background-color: #8c8c8c;
-  }
+//     text-shadow: 0 0 0.125em hsl(100, 100%, 100%), 0 0 0.125em #acaffab9;
 
-  #search-submit {
-    color: #1c9dff;
-    background: rgba(112, 128, 144, 0.521);
+//     box-shadow: inset 0 0 0.5em 0 #9641e05d, 0 0 0.5em 0 #9641e05d;
 
-    text-shadow: 0 0 0.125em hsl(100, 100%, 100%),
-      0 0 0.125em rgba(112, 128, 144, 0.521);
+//     &:hover {
+//       background: #acaffa;
+//     }
+//   }
 
-    box-shadow: inset 0 0 0.5em 0 #e6622580, 0 0 0.5em 0 #e6622580;
-  }
-  #search-submit:hover {
-    background: rgba(112, 128, 144, 0.712);
-  }
+//   .modal-header {
+//     background-color: #d4a3ff;
+//   }
+// }
 
-  .modal-header {
-    background-color: #ff6d29;
-  }
-}
+// .App.theme-sky {
+//   background-color: #94eeff;
+//   color: #4445ad;
+//   button {
+//     background-color: #87acff;
+//   }
+//   #store {
+//     background: #fab6578e;
+//     color: #32fad8;
+//   }
+//   .navbar {
+//     background-color: #6fb2bf;
 
-.App.theme-original {
-  background-color: rgb(67, 45, 128);
-  color: #222;
-  button {
-    background-color: #8c8c8c;
-  }
-  #store {
-    color: #5c518f;
-    background: #9e55a656;
-  }
-  .navbar {
-    background-color: #333;
-  }
-  .navbar a:hover {
-    background-color: red;
-  }
-  #search-field {
-    background: #99566286;
-  }
+//     a:hover {
+//       background-color: #fa3e44;
+//     }
+//   }
+//   #search-field {
+//     background-color: #fab657a6;
+//   }
 
-  #search-submit {
-    color: #0e2752;
-    background: #924e996e;
+//   #search-submit {
+//     color: #87ffd1;
+//     background: #e3452d86;
 
-    text-shadow: 0 0 0.125em white, 0 0 0.125em #0e2752;
+//     text-shadow: 0 0 0.125em hsl(100, 100%, 100%), 0 0 0.125em #e3452d86;
 
-    box-shadow: inset 0 0 0.5em 0 #924e99, 0 0 0.5em 0 #924e99;
-  }
-  #search-submit:hover {
-    background: #924e9998;
-  }
+//     box-shadow: inset 0 0 0.5em 0 #87ffd191, 0 0 0.5em 0 #87ffd191;
 
-  .modal-header {
-    background-color: #5cb85c;
-  }
-}
+//     &:hover {
+//       background: #e3452dbb;
+//     }
+//   }
+
+//   .modal-header {
+//     background-color: #6effc7;
+//   }
+// }
+
+// .App.theme-dark {
+//   background-color: rgb(20, 20, 20);
+//   color: #ff6d29;
+
+//   button {
+//     background-color: #403939;
+//   }
+//   #store {
+//     // background: #436b50d0;
+//     background: #403939;
+//     background: var(--gray);
+//     color: #f8f8f8;
+//   }
+//   .navbar {
+//     background-color: #bf511f;
+//   }
+//   .navbar a:hover {
+//     background-color: var(--orange);
+//   }
+//   #search-field {
+//     background-color: #8c8c8c;
+//   }
+
+//   #search-submit {
+//     color: #1c9dff;
+//     // background: rgba(112, 128, 144, 0.521);
+//     background: var(--gray);
+
+//     text-shadow: 0 0 0.125em hsl(100, 100%, 100%),
+//       0 0 0.125em rgba(112, 128, 144, 0.521);
+
+//     box-shadow: inset 0 0 0.5em 0 #e6622580, 0 0 0.5em 0 #e6622580;
+//   }
+//   #search-submit:hover {
+//     background: rgba(112, 128, 144, 0.712);
+//   }
+
+//   .modal-header {
+//     background-color: #ff6d29;
+//   }
+// }

@@ -70,5 +70,5 @@ window.env = {
   "windir": "C:\\Windows",
   "WSLENV": "WT_SESSION::WT_PROFILE_ID",
   "WT_PROFILE_ID": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-  "WT_SESSION": "496c8bed-9032-4358-9ac1-2fe3b8c59636"
+  "WT_SESSION": "adc3143c-5a24-4ea6-a1c5-ea6f55f6cf60"
 };

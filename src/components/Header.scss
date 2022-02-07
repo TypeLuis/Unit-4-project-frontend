@@ -16,18 +16,20 @@
 .navbar {
   font-family: Arial;
   z-index: 1;
-  overflow: hidden;
+  // overflow: hidden;
 
   /* https://www.codegrepper.com/code-examples/css/how+to+make+nav+bar+stay+on+screen+while+scrolling */
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
   /* Links inside the navbar */
+  // display: inline;
+  // height: 46px;
+
+  display: flex;
+  height: 46px;
 
   z-index: 100;
-  @media (min-width: 951) {
-    display: flex;
-  }
   background-color: #333;
 
   & a {
@@ -45,28 +47,41 @@
     }
   }
 
+  .hamburger {
+    display: none;
+  }
+
+  .burger-content {
+    display: none;
+  }
+
   .userShows {
     /* justify-self: right; */
     float: right;
   }
 
   @media (max-width: 950px) {
-    .theme-options {
+    // .theme-options {
+    //   // display: none;
+    // }
+
+    .search-div {
+      display: inline;
+      float: right;
+      margin-right: 1em;
+    }
+
+    .big {
       display: none;
     }
 
-    .search-form {
-      display: none;
-    }
-
-    .links {
-      display: none;
-    }
+    justify-content: space-between;
 
     .hamburger {
       // padding: 3px 8px;
       // margin-top: 0.1em;
       // font-size: 2em;
+      display: inline;
       float: left;
       margin: 0.25em;
       color: turquoise;
@@ -77,8 +92,11 @@
     .burger-content {
       display: flex;
       flex-direction: column;
-      // position: relative;
+      position: absolute;
       background-color: #333;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+      z-index: 3;
+      // width: 100%;
       width: 100vw;
       margin-top: 46px;
 

@@ -1,6 +1,7 @@
 import { React, useState, useContext, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
+import searchIcon from '../logos/icons8-search.svg'
 import './SearchForm.css'
 
 const SearchForm = () => {
@@ -17,7 +18,7 @@ const SearchForm = () => {
     }
 
     return (
-        <div >
+        <div className='search-div'>
 
             <form className='search-form' onSubmit={handleSubmit}>
                 <div>
@@ -41,7 +42,7 @@ const SearchForm = () => {
                 </div>
 
                 <div className='submit-div'>
-                    <input id='search-submit' type="submit" value="Search Now!!" />
+                    <button id='search-submit'></button>
                 </div>
 
             </form>

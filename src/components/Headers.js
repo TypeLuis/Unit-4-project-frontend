@@ -41,9 +41,9 @@ const Headers = (props) => {
 
     return (
         <div>
-            <nav ref={myContainer} className='navbar'>
+            <nav ref={myContainer} className={`navbar ${String(content)}`}>
 
-                <div className='links'>
+                <div className='links big'>
                     {user.email ?
 
 
@@ -67,17 +67,19 @@ const Headers = (props) => {
                 </div>
 
 
-                <span className='theme-options'>
+                <span className='theme-options big'>
                     <span onClick={()=>{handleClick('theme-bubble')}} id='theme-bubble'/>
                     <span onClick={()=>{handleClick('theme-sky')}} id='theme-sky'/>
                     <span onClick={()=>{handleClick('theme-dark')}} id='theme-dark'/>
                     <span onClick={()=>{handleClick('theme-original')}} id='theme-original'/>
                 </span>
-                <SearchForm />
 
                 <span onClick={handleBurgerClick} className='hamburger'>
                     <FaBars />
                 </span>
+
+
+
 
 
                 {burger &&
@@ -85,11 +87,40 @@ const Headers = (props) => {
                     <div className={`burger-content ${String(content)}`}>
                         
                         <ol>
-                            <li>About</li>
+                            <li>
+                                <span className='theme-options smallBurger'>
+                                    <span onClick={()=>{handleClick('theme-bubble')}} id='theme-bubble'/>
+                                    <span onClick={()=>{handleClick('theme-sky')}} id='theme-sky'/>
+                                    <span onClick={()=>{handleClick('theme-dark')}} id='theme-dark'/>
+                                    <span onClick={()=>{handleClick('theme-original')}} id='theme-original'/>
+                                </span>
+                            </li>
 
-                            <li>Skills</li>
+                           
+                            {user.email ?
 
-                            <li>Portfolio</li>
+
+
+                                <>
+
+                                    <li><Link to={`/checkout`}>checkout</Link></li>
+
+                                    <li><Link to={`/orders`}>orders</Link></li>
+
+                                    <li><Link to='/login' onClick={() => { setUser({}); localStorage.removeItem('userId') }} >Logout</Link></li>
+                                </>
+
+                                :
+                                <>
+
+                                    <li><Link to='/signup' >Signup</Link></li>
+
+                                    <li><Link to='/login' >login</Link></li>
+                                </>
+
+                            }
+
+                            {/* <li>Portfolio</li> */}
 
                         </ol>
                         
@@ -99,6 +130,7 @@ const Headers = (props) => {
                 }
 
 
+                <SearchForm />
 
 
             </nav>

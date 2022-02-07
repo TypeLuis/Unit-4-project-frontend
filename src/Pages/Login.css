@@ -3,12 +3,31 @@
 .user-form {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -46px;
+  /* margin: 0 auto; */
+}
+
+.form-acc {
+}
+@media (min-width: 600px) {
+  .form-acc {
+    border: 1px solid black;
+    padding: 6em;
+    border-radius: 2em;
+    box-shadow: -0.5vmin -0.8vmin 5vmin 5vmin #333;
+    /* overflow: hidden; */
+  }
 }
 
 .email input {
   padding: 10px 30px;
-  width: 405px;
+  max-width: 405px;
+  min-width: 220px;
+  width: 32vw;
   height: 50px;
 
   border-radius: 1em;
@@ -36,7 +55,9 @@
 .password input {
   margin-top: 15px;
   padding: 10px 30px;
-  width: 405px;
+  max-width: 405px;
+  min-width: 220px;
+  width: 32vw;
   height: 50px;
 
   border-radius: 1em;

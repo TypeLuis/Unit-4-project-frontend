@@ -28,6 +28,7 @@ productFunctions.getProducts = async (store, product, page, setResponse, setResp
     }
     catch (error) {
         console.log(error)
+        setLoading(false)
     }
 }
 
@@ -42,46 +43,48 @@ productFunctions.showProducts = (store, response, Link, modal, setModal) => {
             case 'newegg':
                 // console.log(response)
                 return (
-                    <div >
+                    <div className="card-grid">
                         {modal && cartFunctions.showModal(modal, setModal)}
+
                         {response.map((item, i) => {
                             return (
-                                <div key={i}>
-                                    <img style={{ maxHeight: '300px' }} src={item.image} />
-                                    <Link to={`/product/newegg/${item.short_link}`}><p>{item.name}</p></Link>
-                                    <p>${item.price}</p>
-
-
+                                <div key={i} className="card card-shadow">
+                                    <div className="card-header card-image">
+                                        <img src={item.image} />
+                                    </div>
+                                    <div className="card-body">
+                                        <Link to={`/product/newegg/${item.short_link}`}><p className='eggName'>{item.name}</p></Link>
+                                        
+                                        <p className='eggPrice'>${item.price}</p>
+                                    </div>
                                     {localStorage.getItem('userId') && 
-                                        <>
-                                            <button onClick={(e) => { cartFunctions.addToCart(item.name, item.price, item.link, item.image, setModal); }} >Add to Cart 🛒</button>
-                                        </>
+                                        <div className="card-footer">
+                                            <button className="btn" onClick={(e) => { cartFunctions.addToCart(item.name, item.price, item.link, item.image, setModal); }}>Add to Cart 🛒</button>
+                                        </div>
                                     }
-
-
                                 </div>
-
                             )
                         })}
                     </div>
                 )
+                                    
 
             case 'ebay':
 
 
                 return (
-                    <div>
+                    <div className="card-grid">
                         {modal && cartFunctions.showModal(modal, setModal)}
                         {response.map((item, i) => {
-                            // console.log(item)
 
                             return (
-                                <div>
 
-                                    <span>
+                                <div key={i} className="card card-shadow">
+                                    <div className="card-header card-image">
                                         <img src={item.image} />
+                                    </div>
+                                    <div className="card-body">
                                         <Link to={`/product/ebay/${item.short_link}`}><p>{item.title}</p></Link>
-
                                         <p>
                                             <span> {item.condition}</span>
 
@@ -92,18 +95,13 @@ productFunctions.showProducts = (store, response, Link, modal, setModal) => {
 
                                             <span>{item.shipping}</span>
                                         </p>
-
-                                    </span>
-
+                                    </div>
                                     {localStorage.getItem('userId') &&
-                                    
-                                        <>
-                                            <button onClick={(e) => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setModal); }} >Add to Cart 🛒</button>
-                                        </>
-                                    
+                                        <div className="card-footer">
+                                            <button className="btn" onClick={(e) => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setModal); }}>Add to Cart 🛒</button>
+                                        </div>
                                     }
-
-                                </div>
+                                </div> 
 
                             )
                         })}

@@ -39,7 +39,7 @@ cartFunctions.getCheckout = async (setResponse, setResponseStatus) => {
         })
 
         console.log(response)
-        console.log('hi')
+        // console.log('hi')
         const checkedList = await response.data.carts.filter((item) => { return (item.checkedOut !== true) })
 
         console.log(checkedList)

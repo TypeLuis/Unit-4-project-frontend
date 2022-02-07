@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Headers from './components/Headers';
 import SearchForm from './components/SearchForm';
 import Login from './Pages/Login';
