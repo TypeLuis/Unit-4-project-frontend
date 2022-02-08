@@ -66,7 +66,9 @@ const SearchResults = () => {
 
                                     {[...Array(pageLimit)].map((item, i) => {
                                        return (
-                                           <Link to={`/store/${store}/${product}/${i + 1}`} 
+                                           <Link 
+                                           
+                                           to={`/store/${store}/${product}/${i + 1}`} 
 
                                            className={`
                                            ${parseInt(page) === 1 && i + 1 === 1 ? 'firstNum' : ''} ${pageLimit != i + 1 ? 'num': parseInt(page) === pageLimit ?'lastNum' : 'num'} ${parseInt(page) === i + 1 ? 'active' : ''}
