@@ -5,6 +5,7 @@ import productFunctions from '../functions/ProductResponse'
 import { Link } from 'react-router-dom'
 
 import './SearchResults.css'
+import LoadingScreen from '../components/LoadingScreen'
 
 
 const SearchResults = () => {
@@ -31,7 +32,7 @@ const SearchResults = () => {
         <div>
             {loading ?
             
-                <h1>Loading...</h1>
+                <LoadingScreen />
 
             :
 

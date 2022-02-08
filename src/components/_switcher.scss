@@ -143,6 +143,11 @@ body {
     }
   }
 
+  .loading-screen {
+    background-color: var(--bg);
+    transition: background-color 500ms ease-in-out;
+  }
+
   #store {
     color: var(--store-color);
     background: var(--bg-store);

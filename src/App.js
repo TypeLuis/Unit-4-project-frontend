@@ -19,6 +19,7 @@ import Test from './Pages/Test';
 // import './switcher.scss'
 import axios from 'axios'
 import Home from './Pages/Home';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
 
@@ -79,6 +80,8 @@ function App() {
         {/* <Route path='store/:store/:product' element={<SearchResults />} /> */}
 
         <Route path='/store/:store/:product/:page' element={<SearchResults />} />
+
+        <Route path='/loading' element={ <LoadingScreen /> } />
 
         
 
