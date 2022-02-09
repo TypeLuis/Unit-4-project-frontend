@@ -88,7 +88,7 @@ function App() {
         <Route path='/stripe/success' element={ <StripeTest />} />
         <Route path='/stripe/cancel' element={ <StripeTest />} /> */}
 
-        <Route path='/checkout' element={
+        <Route path='/order/checkout' element={
           user.email ?
             <StripeTest />
           :
