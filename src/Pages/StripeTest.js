@@ -89,7 +89,7 @@ export default function StripeTest() {
         const response = await axios.request(options)
         console.log(response)
 
-        setSwitchBool(!switchBool)
+        setBool(!bool)
 
     } catch (error) {
         console.log(error)
