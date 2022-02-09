@@ -57,11 +57,13 @@ productFunctions.showProducts = (store, response, Link, modal, setModal) => {
                                         
                                         <p className='eggPrice'>${item.price}</p>
                                     </div>
-                                    {localStorage.getItem('userId') && 
                                         <div className="card-footer">
+                                        {localStorage.getItem('userId') && 
                                             <button className="btn" onClick={(e) => { cartFunctions.addToCart(item.name, item.price, item.link, item.image, setModal); }}>Add to Cart 🛒</button>
+                                        }
+
+                                            <a className='btn-link' href={item.link}><button className='btn btn-outline'>Visit Page</button></a>
                                         </div>
-                                    }
                                 </div>
                             )
                         })}
@@ -96,11 +98,13 @@ productFunctions.showProducts = (store, response, Link, modal, setModal) => {
                                             <span>{item.shipping}</span>
                                         </p>
                                     </div>
-                                    {localStorage.getItem('userId') &&
                                         <div className="card-footer">
+                                        {localStorage.getItem('userId') &&
                                             <button className="btn" onClick={(e) => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setModal); }}>Add to Cart 🛒</button>
+                                        }
+
+                                            <a className='btn-link' href={item.link}><button className='btn btn-outline'>Visit Page</button></a>
                                         </div>
-                                    }
                                 </div> 
 
                             )

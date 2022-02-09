@@ -61,6 +61,7 @@
   background: var(--color);
   color: white;
   border: none;
+  height: 37px;
   font-size: 1rem;
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
@@ -88,6 +89,6 @@
   background: hsl(200, 50%, 90%);
 }
 
-.btn + .btn {
+.btn + .btn-link {
   margin-left: 0.25rem;
 }

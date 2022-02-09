@@ -49,7 +49,7 @@ const Headers = (props) => {
 
 
                         <div className='userShows'>
-                            <Link to={`/checkout`}>checkout</Link>
+                            <Link to={`/order/checkout`}>checkout</Link>
                             <Link to={`/orders`}>orders</Link>
                             <Link to='/login' onClick={() => { setUser({}); localStorage.removeItem('userId') }} >Logout</Link>
                         </div>
@@ -103,7 +103,7 @@ const Headers = (props) => {
 
                                 <>
 
-                                    <li><Link to={`/checkout`}>checkout</Link></li>
+                                    <li><Link to={`/order/checkout`}>checkout</Link></li>
 
                                     <li><Link to={`/orders`}>orders</Link></li>
 

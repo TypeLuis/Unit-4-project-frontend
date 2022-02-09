@@ -13,7 +13,6 @@ export default function StripeTest() {
   const [response, setResponse] = useState("");
   const [responseStatus, setResponseStatus] = useState(1);
   const [bool, setBool] = useState(false)
-  const myContainer = useRef(null);
 
   const cart = async () => {
       const cartResponse = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/cart`, {

@@ -135,12 +135,14 @@ cartFunctions.updateCart = async (switchBool, setSwitchBool, setModal) => {
 
 cartFunctions.getOrders = async (setResponse, setResponseStatus) => {
     try {
-        const url = `${process.env.REACT_APP_BACKEND_URL}/cart`
+        const url = `${process.env.REACT_APP_BACKEND_URL}/order`
         const response = await axios.get(url, {
             headers: {
                 Authorization: localStorage.getItem('userId')
             }
         })
+        
+        console.log(response)
 
         let dates = []
 
@@ -186,7 +188,7 @@ cartFunctions.showOrderList = (response, Link) => {
 
 cartFunctions.getOrderDetail = async (setResponse, setResponseStatus, id, setDate) => {
     try {
-        const url = `${process.env.REACT_APP_BACKEND_URL}/cart`
+        const url = `${process.env.REACT_APP_BACKEND_URL}/order`
         const response = await axios.get(url, {
             headers: {
                 Authorization: localStorage.getItem('userId')
@@ -254,6 +256,11 @@ cartFunctions.showOrderDetail = (response, date) => {
 
 
 cartFunctions.showModal = (modal, setModal) => {
+    window.onclick = function (event) {
+        if (event.target.id == 'myModal') {
+            setModal('')
+        }
+    }
     return (
         <div id="myModal" className="modal">
 
