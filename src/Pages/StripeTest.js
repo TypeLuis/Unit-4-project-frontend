@@ -75,6 +75,27 @@ export default function StripeTest() {
     }
   }
 
+  const updateCart = () => {
+      try {
+        const options = {
+            method: 'PUT',
+            url: `${process.env.REACT_APP_BACKEND_URL}/cart`,
+            data: { "date": String(new Date()) },
+            headers: {
+                Authorization: localStorage.getItem('userId')
+            }
+        };
+
+        const response = await axios.request(options)
+        console.log(response)
+
+        setSwitchBool(!switchBool)
+
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
   const test = async (e) => {
       try {
           
@@ -96,6 +117,7 @@ export default function StripeTest() {
 
     if (query.get("success")) {
       setMessage("Order placed! You will receive an email confirmation.");
+      updateCart()
     }
 
     if (query.get("canceled")) {
