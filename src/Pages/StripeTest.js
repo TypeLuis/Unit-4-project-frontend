@@ -81,6 +81,7 @@ export default function StripeTest() {
           e.preventDefault()
           const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/create-checkout-session`,{"id" : localStorage.getItem('userId')})
 
+          console.log(response)
           window.location = response.data.url
       } catch (error) {
           console.log(error)
