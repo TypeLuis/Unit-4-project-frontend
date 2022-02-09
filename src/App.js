@@ -84,20 +84,27 @@ function App() {
 
         <Route path='/loading' element={ <LoadingScreen /> } />
 
-        <Route path='/stripe' element={ <StripeTest />} />
+        {/* <Route path='/stripe' element={ <StripeTest />} />
         <Route path='/stripe/success' element={ <StripeTest />} />
-        <Route path='/stripe/cancel' element={ <StripeTest />} />
+        <Route path='/stripe/cancel' element={ <StripeTest />} /> */}
+
+        <Route path='/checkout' element={
+          user.email ?
+            <StripeTest />
+          :
+            <Navigate to={'/signup'} />
+        } />
 
         
 
         <Route path='/product/:store/:productId' element={<ProductPage />} />
 
-        <Route path='/checkout' element={
+        {/* <Route path='/checkout' element={
           user.email ?
             <Checkout />
           :
             <Navigate to={'/signup'} />
-        } />
+        } /> */}
 
         <Route path='/orders' element={
           user.email ?
