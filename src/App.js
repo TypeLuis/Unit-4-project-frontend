@@ -64,7 +64,7 @@ function App() {
 
         <Route path='/signup' element={
           user.email ?
-          <Navigate to={'/store/ebay/3080/1'} />
+          <Navigate to={'/'} />
         :
           <Signup />
         } />
@@ -73,7 +73,7 @@ function App() {
 
         <Route path='/login' element={
           user.email ?
-            <Navigate to={'/store/ebay/3080/1'} />
+            <Navigate to={'/'} />
           :
             <Login />
         } />
