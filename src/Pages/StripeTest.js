@@ -75,7 +75,7 @@ export default function StripeTest() {
     }
   }
 
-  const completeCart = () => {
+  const completeCart = async () => {
       try {
         const options = {
             method: 'PUT',
