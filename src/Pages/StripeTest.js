@@ -75,7 +75,7 @@ export default function StripeTest() {
     }
   }
 
-  const updateCart = () => {
+  const completeCart = () => {
       try {
         const options = {
             method: 'PUT',
@@ -117,7 +117,7 @@ export default function StripeTest() {
 
     if (query.get("success")) {
       setMessage("Order placed! You will receive an email confirmation.");
-      updateCart()
+      completeCart()
     }
 
     if (query.get("canceled")) {
