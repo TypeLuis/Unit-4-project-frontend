@@ -89,10 +89,10 @@ function App() {
         <Route path='/stripe/cancel' element={ <StripeTest />} /> */}
 
         <Route path='/order/checkout' element={
-          user.email ?
+          // user.email ?
             <StripeTest />
-          :
-            <Navigate to={'/signup'} />
+          // :
+          //   <Navigate to={'/signup'} />
         } />
 
         
