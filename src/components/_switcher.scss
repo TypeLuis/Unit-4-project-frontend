@@ -19,6 +19,7 @@ body {
   height: 100%;
 }
 
+// defining colors
 :root {
   --darkRed: #49111c;
   --white: #f2f4f3;
@@ -37,6 +38,8 @@ body {
   --gray: #5c574f;
 }
 
+// Giving variables for each theme
+// Each theme has the same variable name
 .theme-sky {
   --bg: var(--darkRed);
   --bg-Nav: var(--gray-purple);
@@ -62,8 +65,8 @@ body {
   --bg-submit-hover: #924e9998;
   --bg-submit-icon: var(--beige2);
   --bg-modal: #5cb85c;
-  --color: #2d20b3;
-  --store-color: #469984;
+  --color: #0d5744;
+  --store-color: #6ae5c7;
   --shadow-submit: #924e99;
 }
 
@@ -114,6 +117,8 @@ body {
   }
 }
 
+// Background color for each theme
+
 #theme-bubble {
   background-color: #ba6ffd;
 }
@@ -130,6 +135,7 @@ body {
   background-color: rgb(67, 45, 128);
 }
 
+// setting the color of each element based on the color of the theme is
 .App {
   background-color: var(--bg);
   color: var(--color);
@@ -143,33 +149,44 @@ body {
     }
   }
 
+  .checkoutBody {
+    background: var(--bg);
+    transition: background 500ms ease-in-out;
+  }
+
   .pagination {
-    & a {
+    & a,
+    & span {
       color: var(--store-color);
       background: var(--bg-store);
+      transition: color 1000ms ease-in-out, background 500ms ease-in-out;
     }
 
     & a:hover {
       color: var(--color);
+      transition: color 100ms ease-in-out;
     }
 
-    $page-width: 6vw;
-    $half-width: $page-width * 1 / 2;
-    $third-width: $page-width * 1 /3;
+    $page-width: Min(6vw, 60px);
+    $half-width: Min(6vw * 1 / 2, 60px * 1 / 2);
+    $third-width: Min(6vw * 1 / 3, 60px * 1 / 3);
 
     .num::before,
     .next::before,
     .lastNum::before {
       border-right: $third-width solid var(--bg-store);
+      transition: border-right 500ms ease-in-out;
     }
 
     .num::after,
     .prev::after {
       border-right: $third-width solid var(--store-color);
+      transition: border-right 500ms ease-in-out;
     }
 
     .firstNum::before {
       border-right: $third-width solid var(--bg-store);
+      transition: border-right 500ms ease-in-out;
     }
   }
 
@@ -232,162 +249,3 @@ body {
     transition: background-color 500ms ease-in-out;
   }
 }
-
-// .App.theme-original {
-//   background-color: rgb(67, 45, 128);
-//   color: #222;
-//   button {
-//     background-color: #8c8c8c;
-//   }
-//   #store {
-//     color: #5c518f;
-//     background: #9e55a656;
-//   }
-//   .navbar {
-//     background-color: #333;
-//   }
-//   .navbar a:hover {
-//     background-color: red;
-//   }
-//   #search-field {
-//     background: #99566286;
-//   }
-
-//   #search-submit {
-//     color: #0e2752;
-//     background: #924e996e;
-
-//     text-shadow: 0 0 0.125em white, 0 0 0.125em #0e2752;
-
-//     box-shadow: inset 0 0 0.5em 0 #924e99, 0 0 0.5em 0 #924e99;
-//   }
-//   #search-submit:hover {
-//     background: #924e9998;
-//   }
-
-//   .modal-header {
-//     background-color: #5cb85c;
-//   }
-// }
-
-// .App.theme-bubble {
-//   background-color: #ba6ffd;
-//   color: #4445ad;
-//   button {
-//     background-color: #4a4cff;
-//   }
-//   #store {
-//     background: #fe63e75b;
-//     color: #ff5e57;
-//   }
-//   .navbar {
-//     background-color: #4445ad;
-
-//     a:hover {
-//       background-color: #debbfd;
-//     }
-//   }
-//   #search-field {
-//     background-color: #acaefa;
-//   }
-
-//   #search-submit {
-//     &::before {
-//       color: #9541e0;
-//     }
-//     background: #acaffab9;
-
-//     text-shadow: 0 0 0.125em hsl(100, 100%, 100%), 0 0 0.125em #acaffab9;
-
-//     box-shadow: inset 0 0 0.5em 0 #9641e05d, 0 0 0.5em 0 #9641e05d;
-
-//     &:hover {
-//       background: #acaffa;
-//     }
-//   }
-
-//   .modal-header {
-//     background-color: #d4a3ff;
-//   }
-// }
-
-// .App.theme-sky {
-//   background-color: #94eeff;
-//   color: #4445ad;
-//   button {
-//     background-color: #87acff;
-//   }
-//   #store {
-//     background: #fab6578e;
-//     color: #32fad8;
-//   }
-//   .navbar {
-//     background-color: #6fb2bf;
-
-//     a:hover {
-//       background-color: #fa3e44;
-//     }
-//   }
-//   #search-field {
-//     background-color: #fab657a6;
-//   }
-
-//   #search-submit {
-//     color: #87ffd1;
-//     background: #e3452d86;
-
-//     text-shadow: 0 0 0.125em hsl(100, 100%, 100%), 0 0 0.125em #e3452d86;
-
-//     box-shadow: inset 0 0 0.5em 0 #87ffd191, 0 0 0.5em 0 #87ffd191;
-
-//     &:hover {
-//       background: #e3452dbb;
-//     }
-//   }
-
-//   .modal-header {
-//     background-color: #6effc7;
-//   }
-// }
-
-// .App.theme-dark {
-//   background-color: rgb(20, 20, 20);
-//   color: #ff6d29;
-
-//   button {
-//     background-color: #403939;
-//   }
-//   #store {
-//     // background: #436b50d0;
-//     background: #403939;
-//     background: var(--gray);
-//     color: #f8f8f8;
-//   }
-//   .navbar {
-//     background-color: #bf511f;
-//   }
-//   .navbar a:hover {
-//     background-color: var(--orange);
-//   }
-//   #search-field {
-//     background-color: #8c8c8c;
-//   }
-
-//   #search-submit {
-//     color: #1c9dff;
-//     // background: rgba(112, 128, 144, 0.521);
-//     background: var(--gray);
-
-//     text-shadow: 0 0 0.125em hsl(100, 100%, 100%),
-//       0 0 0.125em rgba(112, 128, 144, 0.521);
-
-//     box-shadow: inset 0 0 0.5em 0 #e6622580, 0 0 0.5em 0 #e6622580;
-//   }
-//   #search-submit:hover {
-//     background: rgba(112, 128, 144, 0.712);
-//   }
-
-//   .modal-header {
-//     background-color: #ff6d29;
-//   }
-// }

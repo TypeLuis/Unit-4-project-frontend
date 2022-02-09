@@ -17,6 +17,8 @@ const Test = () => {
     console.log(myContainer.current)
   });
     return (
+
+
         <div style={{marginTop : '100px'}}>
             
             <h1 ref={myContainer}>Ref with react</h1>

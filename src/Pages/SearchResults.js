@@ -5,10 +5,11 @@ import productFunctions from '../functions/ProductResponse'
 import { Link } from 'react-router-dom'
 
 
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+
 
 import './SearchResults.css'
 import LoadingScreen from '../components/LoadingScreen'
+import Pagination from '../components/Pagination'
 
 
 const SearchResults = () => {
@@ -20,9 +21,6 @@ const SearchResults = () => {
     const [loading, setLoading] = useState(false)
     const [modal, setModal] = useState('')
 
-    console.log(store, product, parseInt(page))
-    console.log(response)
-
     useEffect(() => {
         productFunctions.getProducts(
             store, product, page,
@@ -31,13 +29,6 @@ const SearchResults = () => {
         )
     }, [store, product, page])
 
-    const returnPages = (pages) => {
-        for (let i=1 ; i <= pages; i++){
-            return (
-                <h1>{i}</h1>
-            )
-        }
-    }
 
     return (
         <div>
@@ -56,35 +47,7 @@ const SearchResults = () => {
                         {response.length > 0 ?
 
                             <div >
-                                <div className='pagination'>
-
-                                    {parseInt(page) > 1 && 
-                                    
-                                        <Link to={`/store/${store}/${product}/${page > 0 && parseInt(page) - 1}`} className='prev'><i><FaAngleLeft /></i></Link>
-                                    }
-
-
-                                    {[...Array(pageLimit)].map((item, i) => {
-                                       return (
-                                           <Link 
-                                           
-                                           to={`/store/${store}/${product}/${i + 1}`} 
-
-                                           className={`
-                                           ${parseInt(page) === 1 && i + 1 === 1 ? 'firstNum' : ''} ${pageLimit != i + 1 ? 'num': parseInt(page) === pageLimit ?'lastNum' : 'num'} ${parseInt(page) === i + 1 ? 'active' : ''}
-                                           `}>
-
-                                                {i + 1}
-
-                                           </Link>
-                                       )
-                                    })}
-
-                                    {parseInt(page) < pageLimit &&
-                                        <Link to={`/store/${store}/${product}/${parseInt(page) + 1}`} className='next'><i><FaAngleRight /></i></Link>
-                                    }
-
-                                </div>
+                                <Pagination product={product} store={store} page={page} pageLimit={pageLimit}/>
 
                                 {productFunctions.showProducts(store, response, Link, modal, setModal)}
 
@@ -101,10 +64,12 @@ const SearchResults = () => {
 
 
                     </div>
-                    :
+                :
 
-                    null
-                    }
+                    <>
+                        <h1>Error</h1>
+                    </>
+                }
 
                 </>
         

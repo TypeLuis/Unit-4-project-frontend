@@ -20,6 +20,7 @@ import Test from './Pages/Test';
 import axios from 'axios'
 import Home from './Pages/Home';
 import LoadingScreen from './components/LoadingScreen';
+import StripeTest from './Pages/StripeTest';
 
 function App() {
 
@@ -82,6 +83,10 @@ function App() {
         <Route path='/store/:store/:product/:page' element={<SearchResults />} />
 
         <Route path='/loading' element={ <LoadingScreen /> } />
+
+        <Route path='/stripe' element={ <StripeTest />} />
+        <Route path='/stripe/success' element={ <StripeTest />} />
+        <Route path='/stripe/cancel' element={ <StripeTest />} />
 
         
 
