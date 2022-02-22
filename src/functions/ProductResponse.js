@@ -97,7 +97,7 @@ productFunctions.showProducts = (store, response, Link, modal, setModal) => {
 
                                             <span>{item.shipping}</span>
                                         </p>
-                                    </div>
+                                    </div> 
                                         <div className="card-footer">
                                         {localStorage.getItem('userId') &&
                                             <button className="btn" onClick={(e) => { cartFunctions.addToCart(item.title, item.price, item.link, item.image, setModal); }}>Add to Cart 🛒</button>

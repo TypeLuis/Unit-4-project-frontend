@@ -157,12 +157,12 @@ export default function StripeTest() {
                                     <h3>{item.info.item_name}</h3>
                                     <h5>${item.info.item_price}</h5>
                                     <h5>Qty {item.quantity} 
-                                    <span
+                                    <div className="quantity"
                                         onClick={(e)=>{updateCart(e.target.textContent, item.info.item_price, item.info.item_name, item.info.item_link, item.info.item_img, item.info.id)}}
-                                    >-</span> 
-                                    <span
+                                    >-</div> 
+                                    <div className="quantity"
                                         onClick={(e)=>{updateCart(e.target.textContent, item.info.item_price, item.info.item_name, item.info.item_link, item.info.item_img, item.info.id)}}
-                                    >+</span>
+                                    >+</div>
                                     
                                     
                                     </h5>

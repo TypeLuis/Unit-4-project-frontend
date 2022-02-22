@@ -36,6 +36,7 @@ window.env = {
   "npm_lifecycle_event": "start",
   "npm_lifecycle_script": "react-dotenv && react-scripts start",
   "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+  "npm_package_engines_node": "16.x",
   "npm_package_json": "C:\\Users\\typel\\SEI\\Unit4\\project_week\\frontend\\package.json",
   "npm_package_name": "frontend",
   "npm_package_version": "0.1.0",
@@ -70,5 +71,5 @@ window.env = {
   "windir": "C:\\Windows",
   "WSLENV": "WT_SESSION::WT_PROFILE_ID",
   "WT_PROFILE_ID": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-  "WT_SESSION": "adc3143c-5a24-4ea6-a1c5-ea6f55f6cf60"
+  "WT_SESSION": "feaddec1-a7c8-4635-b32e-ab9f227956fe"
 };
